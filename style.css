@@ -1,0 +1,20 @@
+.row {
+    display: flex;
+}
+
+.stat {
+    width: 150px;
+}
+
+.score {
+    width: 50px;
+    text-align: center;
+}
+
+.color0 {
+    background-color: #EAEAEA;
+}
+
+.bold {
+    font-weight: bold;
+}
