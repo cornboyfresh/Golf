@@ -63,7 +63,21 @@ fetch(url2).then(function(response) {
     }
 }).then(function() {
     ourGolfers.sort(function(a, b) {
-        return a.score - b.score
+        score1 = a.score
+        score2 = b.score
+        if (score1 == "E" || score1 == "") {
+            score1 = 0
+        } else {
+            score1 = parseInt(score1)
+        }
+
+        if (score2 == "E" || score2 == "") {
+            score2 = 0
+        } else {
+            score2 = parseInt(score2)
+        }
+
+        return score1 - score2
     })
 
     ourGolfers.forEach((golfer, index) => {
