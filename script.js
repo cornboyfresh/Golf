@@ -50,14 +50,29 @@ fetch(url2).then(function(response) {
             } else {
                 score == parseInt(score)
             }
+            let r2 = golfer['round3']['prior']
+            let r3 = golfer['round4']['prior']
+            let r4 = ""
+            if (golfer['round2']['roundStatus'] == "Playing") {
+                r2 = golfer['today']
+            }
+
+            if (golfer['round3']['roundStatus'] == "Playing") {
+                r3 = golfer['today']
+            }
+
+            if (golfer['round4']['roundStatus'] == "Playing") {
+                r4 = golfer['today']
+            }
+            
             ourGolfers.push(createGolfer(golfer['display_name'],
                                         name,
                                         score,
                                         golfer['thru'],
-                                        golfer['round1']['total'],
-                                        golfer['round2']['total'],
-                                        golfer['round3']['total'],
-                                        golfer['round4']['total'],
+                                        golfer['round2']['prior'],
+                                        r2,
+                                        r3,
+                                        r4,
                                         ))
         }
     }
@@ -102,10 +117,30 @@ fetch(url2).then(function(response) {
         thruDiv.className = "stat"
         thruDiv.innerText = golfer.thru
 
+        let r1Div = document.createElement("div")
+        r1Div.className = "score"
+        r1Div.innerText = golfer.r1
+
+        let r2Div = document.createElement("div")
+        r2Div.className = "score"
+        r2Div.innerText = golfer.r2
+
+        let r3Div = document.createElement("div")
+        r3Div.className = "score"
+        r3Div.innerText = golfer.r3
+
+        let r4Div = document.createElement("div")
+        r4Div.className = "score"
+        r4Div.innerText = golfer.r4
+
         container.appendChild(scoreDiv)
         container.appendChild(nameDiv)
         container.appendChild(thruDiv)
         container.appendChild(ownerDiv)
+        container.appendChild(r1Div)
+        container.appendChild(r2Div)
+        container.appendChild(r3Div)
+        container.appendChild(r4Div)
 
         document.body.appendChild(container)
     })
